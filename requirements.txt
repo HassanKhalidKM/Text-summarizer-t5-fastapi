@@ -1,0 +1,7 @@
+﻿--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi
+uvicorn
+transformers
+torch
+jinja2
+starlette<1.0.0
