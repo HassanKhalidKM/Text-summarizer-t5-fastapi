@@ -27,7 +27,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase owner name
+        run: echo "OWNER_LC=$(echo '${{ github.actor }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Tag and push image
         run: |
-          docker tag text-summarizer ghcr.io/${{ github.actor }}/text-summarizer:latest
-          docker push ghcr.io/${{ github.actor }}/text-summarizer:latest
+          docker tag text-summarizer ghcr.io/${{ env.OWNER_LC }}/text-summarizer:latest
+          docker push ghcr.io/${{ env.OWNER_LC }}/text-summarizer:latest
